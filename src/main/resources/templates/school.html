@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wizard school</title>
+</head>
+<body>
+<h3 th:text="${school.id} ? 'Edit School' : 'Create School'">Wizard School</h3>
+<form method="post" th:action="@{/wizard}" th:object="${wizard}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="wizard-school-name">School name:</label>
+    <input id="wizard-school-name" name="schoolName" placeholder="Hogwards" required th:field="*{schoolName}" type="text">
+    <br><br>
+    <label for="wizard-school-fundation">Wizard School Foundation Date:</label>
+    <input id="wizard-school-fundation" name="schoolFundationDate" placeholder="1980-07-31" required th:field="*{schoolFundationDate}" type="date">
+    <br><br>
+    <label for="wizard-school-director">Wizard School Director:</label>
+    <input id="wizard-school-director" name="schoolDirector" placeholder="Dambldor" th:field="*{schoolDirector}" type="text">
+    <br><br>
+    <label for="wizard-school-certificated">Is certificated ?</label>
+    <input id="wizard-school-certificated" name="certificated" th:field="*{certificated}" type="checkbox">
+    <br><br>
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>

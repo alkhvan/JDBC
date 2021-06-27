@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wizard School List</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>Wizard school</h3>
+<a href="/wizard">Add a new school !</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>School name</th>
+        <th>School Foundation Date</th>
+        <th>School Director</th>
+        <th>Certificated</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="school : ${schools}">
+        <td th:text="${school.id}">id</td>
+        <td th:text="${school.schoolName}">school name</td>
+        <td th:text="${school.schoolFundationDate}">school foundation name</td>
+        <td th:text="${school.schoolDirector}">school director</td>
+        <td th:text="${school.certificated}">certificated</td>
+        <td><a th:href="@{/school(id=${school.id})}">Edit</a></td>
+        <td><a th:href="@{/school/delete(id=${school.id})}">Remove</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
